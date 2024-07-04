@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "react-feather"
 import { useState, useEffect } from "react";
+import React from "react";
 
 export default function Slide({
   slides = [
