@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import type { AppType } from "next/app";
 import { Inter } from "next/font/google";
-// import { trpc } from "../utils/trpc";
+import { trpc } from "../utils/trpc";
 import "../globals.css";
 
 // This wraps trpc around root component
@@ -16,5 +16,4 @@ const App: AppType = ({ Component, pageProps }) => {
   return <Component className={inter.className} {...pageProps} />;
 };
 
-export default App;
-// export default trpc.withTRPC(MyApp);
+export default trpc.withTRPC(App);
