@@ -55,7 +55,7 @@ export default function Slide({
         </button>
       </div>
 
-      <div className="absolute bottom-4 right-0 left-0">
+      <div className="absolute bottom-10 right-0 left-0">
         <div className="flex items-center justify-center gap-2">
           {slides.map((image) => (
             <div

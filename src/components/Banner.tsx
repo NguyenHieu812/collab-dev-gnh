@@ -9,12 +9,12 @@ export default function Banner() {
         <p className="mt-4 text-gray-600">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum tortor sem, in semper nisl bibendum eu.
         </p>
-        <button className="mt-6 px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+        <button className="mt-6 px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
           Learn More
         </button>
       </div>
       <div className="mt-6 lg:mt-0 lg:ml-6 flex-shrink-0">
-        <Image src="/img/gnhlogo.PNG" className="object-cover rounded-lg" height={256} width={256} alt="Flowbite Logo" />
+        <Image src="/img/gnhlogo.PNG" className="object-cover rounded-lg" height={256} width={256} alt="GNH Logo" />
       </div>
     </div>
   );
