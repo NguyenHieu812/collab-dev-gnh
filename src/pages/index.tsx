@@ -1,10 +1,10 @@
 import Image from "next/image";
 //component
-import Navbar from "./navbar";
-import Banner from "./Banner";
-import Footer from "./Footer";
-import Slide from "./Slide";
-import Form from "./Form";
+import Navbar from "../components/Navbar";
+import Banner from "../components/Banner";
+import Footer from "../components/Footer";
+import Slide from "../components/Slide";
+import Form from "../components/Form";
 
 export default function Home() {
   return (
