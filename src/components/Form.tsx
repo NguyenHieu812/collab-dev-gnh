@@ -1,26 +1,30 @@
 'use client'
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import zodiacData from "./ZodiacData";
+
 export default function Form() {
   const [name, setName] = useState('');
   const [birthday, setBirthday] = useState('');
   const [status, setStatus] = useState('');
+  const [zodiacColor, setZodiacColor] = useState('');
+
   const handleSubmitForm = async (e: any) => {
     e.preventDefault();
-    try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, birthday }),
-      });
-      const data = await response.json();
-      setStatus(data.message);
-    } catch (error) {
-      setStatus("Đã có lỗi");
-    };
-  }
+    const date = new Date(birthday);
+    const monthDay = `${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+
+    const zodiacSign = zodiacData.find(
+      (sign) => monthDay >= sign.start && monthDay <= sign.end
+    );
+
+    if (zodiacSign) {
+      setStatus(`${zodiacSign.name}: ${zodiacSign.personality}`);
+      setZodiacColor(zodiacSign.color);
+    } else {
+      setStatus("Ngày sinh không hợp lệ.");
+    }
+  };
+
   return (
     <form className="max-w-sm mx-auto" onSubmit={handleSubmitForm}>
       <h1 className="text-4xl font-bold text-gray-800 text-center">Kiểm tra tử vi</h1>
@@ -50,7 +54,15 @@ export default function Form() {
       <button type="submit" className="text-white bg-primary-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         Check Now
       </button>
-      {status && <div className="mt-4 text-center text-sm text-gray-600 dark:text-white">{status}</div>}
+      {status && (
+        <div className="mt-4 text-center text-sm text-gray-600 dark:text-white">
+          Cung hoàng đạo của bạn là:
+          <span className={zodiacColor}>
+            {status.split(":")[0]}
+          </span>
+          - Bạn là người{`: ${status.split(":")[1]}`}
+        </div>
+      )}
     </form>
-  )
-};
+  );
+}
